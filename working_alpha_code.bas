@@ -48,7 +48,7 @@ For Each ws In ActiveWorkbook.Sheets
             
                 If ws.Cells(start, 3) = 0 Then
                     For find_value = start To i
-                        If ws.Cells(find_value, 3).Vlue <> 0 Then
+                        If ws.Cells(find_value, 3).Value <> 0 Then
                             start = find_value
                             Exit For
                         End If
