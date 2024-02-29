@@ -1,4 +1,3 @@
-Attribute VB_Name = "Module1"
 Sub alpha()
 Dim ws As Worksheet
 Dim lastrow As Long
@@ -12,12 +11,16 @@ Set ws = ThisWorkbook.Sheets("A")
 For Each ws In ActiveWorkbook.Sheets
 
     lastrow = Cells(Rows.Count, "A").End(xlUp).Row
-
+    
+        'headers
+        
         ws.Cells(1, 9).Value = "Ticker"
         ws.Cells(1, 10).Value = "Yearly Change"
         ws.Cells(1, 11).Value = "Percent Change"
         ws.Cells(1, 12).Value = "Total Stock Volume"
         
+     'math
+     
     For i = 2 To lastrow
         If ws.Cells(i, 1).Value <> "" Then
         ticker = ws.Cells(i, 1).Value
@@ -27,6 +30,8 @@ For Each ws In ActiveWorkbook.Sheets
         percentchange = ((closing - opening) / opening) * 100
         total = ws.Cells(i, 7).Value
         
+       'input data
+       
         ws.Cells(i, 9) = ticker
         ws.Cells(i, 10) = yearlychange
         ws.Cells(i, 11) = percentchange
@@ -36,6 +41,8 @@ For Each ws In ActiveWorkbook.Sheets
 
     Next i
     
+'color
+
 For i = 2 To lastrow
 
     If ws.Cells(i, 10).Value > 0 Then
